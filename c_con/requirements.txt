@@ -1,0 +1,8 @@
+# Python dependencies
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+alembic
+passlib[bcrypt]
+python-dotenv

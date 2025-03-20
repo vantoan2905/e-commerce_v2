@@ -1,7 +1,7 @@
 
 from sqlalchemy import  Column, Integer, String, DateTime, Text
 from datetime import datetime
-from database.Base import Base
+from src.database.Base import Base
 from sqlalchemy.orm import relationship
 import datetime
 class Camera(Base):

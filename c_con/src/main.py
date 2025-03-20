@@ -18,7 +18,7 @@ import uvicorn
 # ------------------------------------------------------------------------------
 # user routing suprise
 # ------------------------------------------------------------------------------
-from api.user import user_router
+from src.api.user import user_router
 
 app.include_router(user_router, tags=["api/users"])
 
@@ -26,7 +26,7 @@ app.include_router(user_router, tags=["api/users"])
 # ------------------------------------------------------------------------------
 # camera info routing suprise
 # ------------------------------------------------------------------------------
-from api.camera_info import cam_info_router
+from src.api.camera_info import cam_info_router
 
 app.include_router(cam_info_router, tags=["api/camera_info"])
 
@@ -37,10 +37,14 @@ app.include_router(cam_info_router, tags=["api/camera_info"])
 # app.include_router(cam_video_router, tags=["ws/camera_video"])
 
 
+# ------------------------------------------------------------------------------
+# product routing suprise
+# # ------------------------------------------------------------------------------
 
 
+from src.api.product import product_router
 
-
+app.include_router(product_router, tags=["api/products"])
 
 
 # ------------------------------------------------------------------------------

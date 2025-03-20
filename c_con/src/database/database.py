@@ -1,4 +1,4 @@
-from dependencies.dependencies import Config
+from src.dependencies.dependencies import Config
 
 
 from sqlalchemy import create_engine

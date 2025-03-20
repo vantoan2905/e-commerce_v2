@@ -1,3 +1,5 @@
 # Git ignore
 .env
 archive (4).zip
+
+data

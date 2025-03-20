@@ -90,12 +90,79 @@ class EventReview(Base):
     user = relationship("User", back_populates="reviews")
 
 
+class Product(Base):
+    __tablename__ = "products"
+    id = Column(Integer, primary_key=True, index=True)
+    gender = Column(String(255), nullable=False)
+    masterCategory = Column(String(255), nullable=False)
+    subCategory = Column(String(255), nullable=False)
+    articleType = Column(String(255), nullable=False)
+    baseColour = Column(String(255), nullable=False)
+    season = Column(String(255), nullable=False)
+    year = Column(String(255), nullable=False)
+    usage = Column(String(255), nullable=False)
+    imageLink = Column(String(255), nullable=False)
+    productLink = Column(String(255), nullable=False)
+    productDisplayName = Column(String(255), nullable=False)
+    price = Column(String(255), nullable=False)
+    currency = Column(String(255), nullable=False)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    reviews =  Column(Integer )
+
+
 # ---------------------------------------------------------
 # Seed data
 # ---------------------------------------------------------
 def seed_data():
     fake = Faker()
     session = SessionLocal()
+
+    # ------------------- Seed Product -----------------------
+    path  = r"D:\project\ecommence\e_server\c_con\src\df_product.csv"
+    df_products = pd.read_csv(path)
+
+
+    products = []
+    for _, row in df_products.iterrows():
+        product = Product(
+            id = row ["id"],
+            gender=row['gender'] if row['gender'] is not None else None,
+            masterCategory=row['masterCategory'] if row['masterCategory'] is not None else None,
+            subCategory=row['subCategory'] if row['subCategory'] is not None else None,
+            articleType=row['articleType'] if row['articleType'] is not None else None,
+            baseColour=row['baseColour'] if row['baseColour'] is not None else None,
+            season=row['season'] if row['season'] is not None else None,
+            year=str(row['year']) if row['year'] is not None else None,
+            usage=row['usage'] if row['usage'] is not None else None,
+            imageLink=row['link'] if row['link'] is not None else None,
+            productLink=row['link'] if row['link'] is not None else None,
+            productDisplayName=row['productDisplayName'] if row['productDisplayName'] is not None else None,
+            price=f"{fake.random_int(min=10, max=100)}.99",
+            currency="USD",
+            reviews = fake.random_int(min=0, max=5)
+        )
+        products.append(product)
+        session.add(product)
+    session.commit()
+    
+    data_product = pd.DataFrame({
+        "gender": [p.gender for p in products],
+        "masterCategory": [p.masterCategory for p in products],
+        "subCategory": [p.subCategory for p in products],
+        "articleType": [p.articleType for p in products],
+        "baseColour": [p.baseColour for p in products],
+        "season": [p.season for p in products],
+        "year": [p.year for p in products],
+        "usage": [p.usage for p in products],
+        "imageLink": [p.imageLink for p in products],
+        "productLink": [p.productLink for p in products],
+        "productDisplayName": [p.productDisplayName for p in products],
+        "price": [p.price for p in products],
+        "currency": [p.currency for p in products],
+        "reviews": [p.reviews for p in products],
+    })
+    data_product.to_csv("products.csv", index=False)
 
     # ------------------- Seed Users -----------------------
     users = []
@@ -113,7 +180,8 @@ def seed_data():
         users.append(user)
         session.add(user)
         default_password.append(password)
-    session.commit() 
+    session.commit()
+    
     data_user = pd.DataFrame({
         "email": [user.email for user in users],
         "username": [user.username for user in users],
@@ -124,6 +192,7 @@ def seed_data():
     })
     data_user.to_csv("users.csv", index=False)
     
+    # ------------------- Seed Cameras -----------------------
     cameras = []
     for _ in range(5):
         camera = Camera(
@@ -150,7 +219,7 @@ def seed_data():
 
     # ------------------- Seed UserCamera ------------------
     for user in users:
-        random_cams = fake.random_elements(elements=cameras, length=3, unique=False)
+        random_cams = fake.random_elements(elements=cameras, length=3, unique=True)
         for cam in random_cams:
             ins = user_camera_table.insert().values(
                 user_name=user.username,
@@ -165,14 +234,14 @@ def seed_data():
     for cam in cameras:
         for _ in range(fake.random_int(min=3, max=5)):
             event = Event(
-                key_camera=cam.key_camera,  # Sử dụng key_camera của Camera
+                key_camera=cam.key_camera,
                 event_type=fake.random_element(elements=("motion", "offline", "tamper")),
                 status=fake.random_element(elements=("new", "viewed", "resolved")),
             )
             events.append(event)
             session.add(event)
     session.commit()  
-
+    
     data_event = pd.DataFrame({
         "event_id": [event.id for event in events],
         "key_camera": [event.key_camera for event in events],

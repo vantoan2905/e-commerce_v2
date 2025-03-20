@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, Depends
 
 from sqlalchemy.orm import Session
-from service.camera_service.camera_info import CameraInfo
-from database.database import get_db
-from schemas.camera import CameraBase, CameraResponse,CameraCreate, CameraUpdate
+from src.service.camera_service.camera_info import CameraInfo
+from src.database.database import get_db
+from src.schemas.camera import CameraBase, CameraResponse,CameraCreate, CameraUpdate
 
-cam_info_router = APIRouter()
+cam_info_router = APIRouter(prefix="/api/camera_info")
 
 
 @cam_info_router.get("/")

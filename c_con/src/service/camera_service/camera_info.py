@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from database.models.camera import Camera
+from src.database.models.camera import Camera
 
 class CameraInfo:
     def __init__(self, db: Session):

@@ -1,6 +1,6 @@
 from sqlalchemy import Boolean, Column, Integer, String, DateTime
 from datetime import datetime
-from database.Base import Base
+from src.database.Base import Base
 from typing import List
 
 class User(Base):

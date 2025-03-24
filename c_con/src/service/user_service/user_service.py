@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from src.database.models.user import User
-from src.schemas.user import UserCreate
+from src.schemas.user_schema import UserCreate
 import hashlib
 
 

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from database.models.camera import Camera
+from e_server.c_con.src.database.models.camera_model import Camera
 
 
 class CameraVideo:

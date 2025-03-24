@@ -1,4 +1,4 @@
-class ReUserCamera:
+class CameraUserInteractionService:
     def __init__(self, conn):
         """
         Initialize the ReUserCamera class with a database connection.

@@ -5,7 +5,7 @@ from fastapi import APIRouter, WebSocket, HTTPException
 import cv2
 
 # import services
-from service.camera_service.camera_video import CameraVideo
+from e_server.c_con.src.service.camera_service.camera_video_service import CameraVideo
 from database.database import get_db
 # create router
 cam_video_router = APIRouter()

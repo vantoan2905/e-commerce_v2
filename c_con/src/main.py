@@ -18,7 +18,7 @@ import uvicorn
 # ------------------------------------------------------------------------------
 # user routing suprise
 # ------------------------------------------------------------------------------
-from src.api.user import user_router
+from src.api.user_api import user_router
 
 app.include_router(user_router, tags=["api/users"])
 
@@ -26,9 +26,9 @@ app.include_router(user_router, tags=["api/users"])
 # ------------------------------------------------------------------------------
 # camera info routing suprise
 # ------------------------------------------------------------------------------
-from src.api.camera_info import cam_info_router
+# from src.api.camera_info import cam_info_router
 
-app.include_router(cam_info_router, tags=["api/camera_info"])
+# app.include_router(cam_info_router, tags=["api/camera_info"])
 
 # ------------------------------------------------------------------------------
 # camera video routing suprise
@@ -36,17 +36,21 @@ app.include_router(cam_info_router, tags=["api/camera_info"])
 # from  api.camera_video import cam_video_router
 # app.include_router(cam_video_router, tags=["ws/camera_video"])
 
-
 # ------------------------------------------------------------------------------
 # product routing suprise
-# # ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 
-from src.api.product import product_router
+from src.api.product_api import product_router
 
 app.include_router(product_router, tags=["api/products"])
 
+# ------------------------------------------------------------------------------
+# user product interaction routing suprise
+# ------------------------------------------------------------------------------
+from src.api.user_product_Interaction_api import user_product_router
 
+app.include_router(user_product_router, tags=["api/user_product_interaction"])
 # ------------------------------------------------------------------------------
 # main routing 
 # ------------------------------------------------------------------------------

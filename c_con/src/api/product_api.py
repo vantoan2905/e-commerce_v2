@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from src.service.product_sevice.product import ProductService
+from src.service.product_service.product_service import ProductService
 from src.database.database import get_db
-from src.schemas.product import ProductCreate, ProductUpdate, ProductSearch
+from src.schemas.product_schema import ProductCreate, ProductUpdate, ProductSearch
 from typing import Dict
 product_router = APIRouter(prefix="/api/products")
 

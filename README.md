@@ -138,7 +138,7 @@ docker build -t ecommerce-fastapi .
 ```
 #### Run the Docker Container
 ```bash
-docker run -p 8000:8000 --env-file .env ecommerce-fastapi
+docker run -p 8000:8000 --env-file .env e-commerce_v2
 ```
 
 ## Data Files

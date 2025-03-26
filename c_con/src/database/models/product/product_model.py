@@ -1,11 +1,11 @@
-
-from sqlalchemy import  Column, Integer, String, DateTime, Text
-from datetime import datetime
-from src.database.Base import Base
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.sql import func
+from src.database import Base
 from sqlalchemy.orm import relationship
-import datetime
+
 class Product(Base):
     __tablename__ = "products"
+
     id = Column(Integer, primary_key=True, index=True)
     gender = Column(String(255), nullable=False)
     masterCategory = Column(String(255), nullable=False)
@@ -20,11 +20,15 @@ class Product(Base):
     productDisplayName = Column(String(255), nullable=False)
     price = Column(String(255), nullable=False)
     currency = Column(String(255), nullable=False)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     reviews = Column(Integer)
 
-    product_interactions = relationship("UserProductInteraction", back_populates="product")
+    # Quan hệ với các bảng tham chiếu sản phẩm
+    product_views = relationship("ProductView", back_populates="product")
+    favorite_products = relationship("FavoriteProduct", back_populates="product")
+    transaction_details = relationship("TransactionDetail", back_populates="product")
 
     def __repr__(self):
-        return f"Product(articleType = {self.articleType}, baseColour = {self.baseColour}, season = {self.season}, year = {self.year}, usage = {self.usage}, productDisplayName = {self.productDisplayName}), price = {self.price}, currency = {self.currency}, reviews = {self.reviews})"
+        return (f"<Product(name={self.productDisplayName}, price={self.price}, "
+                f"currency={self.currency}, reviews={self.reviews})>")

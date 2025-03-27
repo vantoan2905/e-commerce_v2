@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, DECIMAL, ForeignKey
-from src.database import Base
+from src.database.base import Base
 from sqlalchemy.orm import relationship
 
 class TransactionDetail(Base):

@@ -1,8 +1,6 @@
-# database/base.py
 from typing import Any, Dict
-
 from sqlalchemy import MetaData
-from sqlalchemy.orm import as_declarative
+from sqlalchemy.orm import declarative_base
 
 POSTGRES_INDEXES_NAMING_CONVENTION = {
     "ix": "%(column_0_label)s_idx",
@@ -12,16 +10,6 @@ POSTGRES_INDEXES_NAMING_CONVENTION = {
     "pk": "%(table_name)s_pkey",
 }
 
-
 metadata = MetaData(naming_convention=POSTGRES_INDEXES_NAMING_CONVENTION)
 
-
-class_registry: Dict[str, Any] = {}
-
-
-@as_declarative(class_registry=class_registry)
-class Base:
-    id: Any
-    __name__: str
-    __abstract__: bool = True
-    metadata = metadata
+Base = declarative_base(metadata=metadata)

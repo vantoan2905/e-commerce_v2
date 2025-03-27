@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from src.database.models.user_product_Interaction_model import UserProductInteraction
+from e_server.c_con.src.database.models.user_product.user_product_Interaction_model import UserProductInteraction
 from src.schemas.user_product_Interaction_schema import UserProductInteractionCreate
 
 

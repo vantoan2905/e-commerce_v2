@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, DateTime, Enum
 from sqlalchemy.sql import func
-from src.database import Base
+from src.database.base import Base
+
+
 from sqlalchemy.orm import relationship
 
 class User(Base):

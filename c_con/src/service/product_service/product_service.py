@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from e_server.c_con.src.database.models.product.product_model import Product
+from src.database.models.product.product import Product
 from src.schemas.product_schema import ProductCreate, ProductUpdate
 from typing import List, Optional
 from sqlalchemy import and_

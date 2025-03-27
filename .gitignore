@@ -1,5 +1,5 @@
 # Git ignore
 .env
 archive (4).zip
-
+*/__pycache__
 data

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from e_server.c_con.src.database.models.user.user import User
+from src.database.models.user.user import User
 from src.schemas.user_schema import UserCreate
 import hashlib
 
@@ -119,3 +119,17 @@ class UserService:
         return True
 
 
+    def login_user(self, username: str, password: str):
+        """
+        Login a user.
+
+        Parameters:
+            username (str): The username.
+            password (str): The password.
+
+        Returns:
+            bool: True if the login was successful, False otherwise.
+        """
+        hashed_password = hashlib.sha256(password.encode()).hexdigest()
+        user = self.db.query(User).filter(User.username == username, User.hashed_password == hashed_password).first()
+        return user

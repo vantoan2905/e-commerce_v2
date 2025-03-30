@@ -20,7 +20,7 @@ import uvicorn
 # ------------------------------------------------------------------------------
 from src.api.user_api.user import user_router
 
-app.include_router(user_router, tags=["/api/users"])
+app.include_router(user_router)
 
 
 # ------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ app.include_router(user_router, tags=["/api/users"])
 
 from src.api.product_api.product_api import product_router
 
-app.include_router(product_router, tags=["api/products"])
+app.include_router(product_router)
 
 # ------------------------------------------------------------------------------
 # user product interaction routing suprise

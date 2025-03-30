@@ -5,7 +5,7 @@ from src.service.product_service.product_service import ProductService
 from src.schemas.product_schema import ProductCreate, ProductUpdate, ProductSearch
 
 
-product_router = APIRouter()
+product_router = APIRouter( prefix="/api/products", tags=["api/products"])
 
 product_service = ProductService(db=get_db())
 
@@ -15,7 +15,7 @@ async def get_all_products(db: Session = Depends(get_db)):
     try:
         sevice = ProductService(db)
         products = sevice.get_all_products()
-        return products
+        # return products
     except Exception as e:
         print(e)
         raise HTTPException(status_code=500, detail="Internal Server Error")

@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, DateTime, Float, Numeric
 
 class Product(Base):
     __tablename__ = "products"
@@ -24,7 +24,6 @@ class Product(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     reviews = Column(Integer)
 
-    # Quan hệ với các bảng tham chiếu sản phẩm
     product_views = relationship("ProductView", back_populates="product")
     favorite_products = relationship("FavoriteProduct", back_populates="product")
     transaction_details = relationship("TransactionDetail", back_populates="product")

@@ -3,7 +3,7 @@ from src.database.models.product.product import Product
 from src.schemas.product_schema import ProductCreate, ProductUpdate
 from typing import List, Optional
 from sqlalchemy import and_
-
+from sqlalchemy.exc import SQLAlchemyError
 
 class ProductService:
     def __init__(self, db: Session):
@@ -25,14 +25,20 @@ class ProductService:
         self.db.refresh(db_product)
         return db_product
 
-    def get_all_products(self):
+    def get_all_products(self) -> List[Product]:
         """
         Retrieve all products from the database.
 
         Returns:
             List[Product]: A list of all product records in the database.
         """
-        return self.db.query(Product).all()
+        try:
+            products = self.db.query(Product).all()
+            print(products[1])
+            return products
+        except SQLAlchemyError as e:
+            print(f"Database error: {e}")
+            return []
 
     def get_product_by(self, product: Product) -> List[Product]:
         """

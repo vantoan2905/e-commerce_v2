@@ -25,6 +25,9 @@ This project is an e-commerce backend built with FastAPI. It offers API endpoint
 - A database (PostgreSQL, MySQL, or SQLite)
 - Redis (optional, for caching purposes)
 ## Setup Steps
+![alt text](image.png)
+
+
 ### Clone the Repository
 
 ```bash

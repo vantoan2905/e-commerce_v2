@@ -1,79 +1,36 @@
-from src.dependencies.dependencies import Config
-
-
+import os
+import logging
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-config = Config()
-db_user = config.get_user()
-db_password = config.get_password()
-db_host = config.get_host()
-db_port = config.get_port()
-db_name = config.get_name()
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+db_host = os.getenv("DB_HOST")
+db_port = os.getenv("DB_PORT", "5432")
+db_name = os.getenv("DB_NAME")
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+try:
+    engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_size=10, max_overflow=20)
+    with engine.connect() as connection:
+        logger.info("✅ Database connection successful!")
+except Exception as e:
+    logger.error(f"❌ Database connection failed: {e}")
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-# db = SessionLocal()
+
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
-
-
-# class DatabaseController:
-#     """
-#     Controller for managing database sessions and initializing data models.
-#     """
-
-#     def __init__(self) -> None:
-#         """
-#         Initialize the DatabaseController.
-
-#         Loads database configuration, establishes a session via SessionLocal,
-#         and instantiates the data models.
-#         """
-#         self.db_session = SessionLocal()
-
-#         self.user_model = User()
-#         self.camera_detail_model = CameraDetail()
-#         self.user_camera_model = ReUserCamera()
-
-#     def get_user_model(self) -> User:
-#         """
-#         Get the user model instance.
-
-#         Returns:
-#             User: The user model initialized with the database session.
-#         """
-#         return self.user_model
-
-#     def get_camera_detail_model(self) -> CameraDetail:
-#         """
-#         Get the camera detail model instance.
-
-#         Returns:
-#             CameraDetail: The camera detail model initialized with the database session.
-#         """
-#         return self.camera_detail_model
-
-#     def get_user_camera_model(self) -> ReUserCamera:
-#         """
-#         Get the user-camera model instance.
-
-#         Returns:
-#             ReUserCamera: The user-camera model initialized with the database session.
-#         """
-#         return self.user_camera_model
-
-#     def close(self):
-#         """
-#         Close the database session.
-#         """
-#         self.db_session.close()

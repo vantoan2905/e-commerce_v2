@@ -2,6 +2,10 @@ from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
+# -------------------------------------------------------------
+# PageView Model
+# -------------------------------------------------------------
+
 
 class PageView(Base):
     __tablename__ = "page_views"

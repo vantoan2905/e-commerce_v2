@@ -8,6 +8,15 @@ import uuid
 
 user_router = APIRouter( prefix="/api/users", tags=["api/users"])
 
+
+
+# ------------------
+# CRUD Operations for Users ------------------
+# ------------------
+@user_router.get("/health_check")
+async def health_check():
+    return {"status": "ok"}
+
 @user_router.post("/login/", summary="Login", response_model=UserResponse)
 async def login(user: UserLogin, response: Response, db: Session = Depends(get_db)):
     try:

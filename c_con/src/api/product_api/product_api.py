@@ -9,13 +9,20 @@ product_router = APIRouter( prefix="/api/products", tags=["api/products"])
 
 product_service = ProductService(db=get_db())
 
+# ------------------
+# CRUD Operations for Products ------------------
+# ------------------
+@product_router.get("/health_check")
+async def health_check():
+    return {"status": "ok"}
+
 
 @product_router.get("/all/", response_model=list[ProductCreate])
 async def get_all_products(db: Session = Depends(get_db)):
     try:
         sevice = ProductService(db)
         products = sevice.get_all_products()
-        # return products
+        return products
     except Exception as e:
         print(e)
         raise HTTPException(status_code=500, detail="Internal Server Error")

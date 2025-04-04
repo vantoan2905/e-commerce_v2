@@ -8,3 +8,6 @@ from .user_product.favorite_product import FavoriteProduct
 from .transaction.transaction import Transaction
 from .transaction.transaction_detail import TransactionDetail
 from .user_product.tracking_data import TrackingData
+from .product.product import Product
+from .cart.cart import Cart
+from .cart.cart_detail import CartDetail

@@ -1,7 +1,9 @@
 from sqlalchemy import Column, Integer, DECIMAL, ForeignKey
 from src.database.base import Base
 from sqlalchemy.orm import relationship
-
+# -------------------------------------------------------------
+# TransactionDetail Model
+# -------------------------------------------------------------
 class TransactionDetail(Base):
     __tablename__ = "transaction_details"
 

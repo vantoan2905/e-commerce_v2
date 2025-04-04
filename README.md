@@ -75,62 +75,79 @@ uvicorn app.main:app --reload
 - ReDoc: http://127.0.0.1:8000/redoc
 ### Project Structure
 ```bash
-
-├── .gitignore
-├── README.md
-├── archive (4).zip
-├── c_con
-│   ├── .env
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── run.bat
-│   ├── src
-│   │   ├── api
-│   │   │   ├── __init__.py
-│   │   │   ├── camera_info.py
-│   │   │   ├── camera_video.py
-│   │   │   ├── product.py
-│   │   │   └── user.py
-│   │   ├── database
-│   │   │   ├── .gitignore
-│   │   │   ├── Base.py
-│   │   │   ├── __init__.py
-│   │   │   ├── database.py
-│   │   │   └── models
-│   │   │       ├── camera.py
-│   │   │       ├── product.py
-│   │   │       └── user.py
-│   │   ├── dependencies
-│   │   │   ├── __init__.py
-│   │   │   └── dependencies.py
-│   │   ├── df_product.csv
-│   │   ├── main.py
-│   │   ├── migrations
-│   │   │   └── __init__.py
-│   │   ├── schemas
-│   │   │   ├── __init__.py
-│   │   │   ├── camera.py
-│   │   │   ├── product.py
-│   │   │   └── user.py
-│   │   ├── seed_data.py
-│   │   ├── service
-│   │   │   ├── camera_service
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── camera_info.py
-│   │   │   │   └── camera_video.py
-│   │   │   ├── camera_user_service
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── re_user_cam.py
-│   │   │   ├── product_sevice
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── product.py
-│   │   │   └── user_service
-│   │   │       ├── __init__.py
-│   │   │       └── user.py
-│   │   ├── setup.bat
-│   │   ├── test.ipynb
-│   │   └── users.csv
-└── setup.bat
+📄 .gitignore
+📄 README.md
+📄 archive (4).zip
+📁 c_con/
+    📄 .env
+    📄 README.md
+    📄 requirements.txt
+    📄 run.bat
+    📁 src/
+        📄 README.MD
+        📁 api/
+            📄 README.MD
+            📄 image.png
+            📁 product_api/
+                📄 product_api.py
+            📁 user_api/
+                📄 user.py
+        📁 database/
+            📄 .gitignore
+            📄 README.MD
+            📄 __init__.py
+            📄 base.py
+            📄 database.py
+            📄 database_diagram.png
+            📁 models/
+                📄 __init__.py
+                📁 cart/
+                    📄 cart.py
+                    📄 cart_detail.py
+                📁 product/
+                    📄 product.py
+                📁 transaction/
+                    📄 transaction.py
+                    📄 transaction_detail.py
+                📁 user/
+                    📄 user.py
+                📁 user_product/
+                    📄 favorite_product.py
+                    📄 page_view.py
+                    📄 product_view.py
+                    📄 search_history.py
+                    📄 tracking_data.py
+                    📄 user_action.py
+                    📄 user_session.py
+        📁 dependencies/
+            📄 __init__.py
+            📄 dependencies.py
+        📄 df_product.csv
+        📄 main.py
+        📁 migrations/
+            📄 __init__.py
+        📁 schemas/
+            📄 __init__.py
+            📄 product_schema.py
+            📄 user_product_Interaction_schema.py
+            📄 user_schema.py
+        📄 seed_data.py
+        📁 service/
+            📁 product_service/
+                📄 __init__.py
+                📄 product_service.py
+            📁 session_service/
+                📄 session_service.py
+            📁 user_service/
+                📄 __init__.py
+                📄 user_service.py
+        📄 setup.bat
+        📄 system_diagram.png
+        📄 test.ipynb
+        📄 users.csv
+📄 clean_data.ipynb
+📄 data.zip
+📄 setup.bat
 ```
 
 

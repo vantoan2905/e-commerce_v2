@@ -4,7 +4,9 @@ from src.database.base import Base
 
 
 from sqlalchemy.orm import relationship
-
+# --------------------------------------------------------------
+# User Model
+# --------------------------------------------------------------
 class User(Base):
     __tablename__ = "users"
 

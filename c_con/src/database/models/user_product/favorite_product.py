@@ -3,6 +3,12 @@ from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
 
+# -------------------------------------------------------------
+# FavoriteProduct Model
+# -------------------------------------------------------------
+
+
+
 class FavoriteProduct(Base):
     __tablename__ = "favorite_products"
 

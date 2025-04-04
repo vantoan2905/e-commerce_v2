@@ -2,7 +2,9 @@ from sqlalchemy import Column, Integer, DateTime, ForeignKey
 from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
-
+# -------------------------------------------------------------
+# ProductView Model
+# -------------------------------------------------------------
 class ProductView(Base):
     __tablename__ = "product_views"
 

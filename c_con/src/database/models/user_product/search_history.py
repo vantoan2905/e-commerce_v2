@@ -3,6 +3,11 @@ from sqlalchemy.sql import func
 from src.database.base  import Base
 from sqlalchemy.orm import relationship
 
+# -------------------------------------------------------------
+# SearchHistory Model
+# -------------------------------------------------------------
+
+
 class SearchHistory(Base):
     __tablename__ = "search_history"
 

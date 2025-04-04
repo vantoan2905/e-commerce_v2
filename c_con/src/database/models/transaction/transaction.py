@@ -3,6 +3,10 @@ from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
 
+
+# -------------------------------------------------------------
+# Transaction Model
+# -------------------------------------------------------------
 class Transaction(Base):
     __tablename__ = "transactions"
 

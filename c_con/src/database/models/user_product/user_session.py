@@ -3,6 +3,12 @@ from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
 
+# -------------------------------------------------------------
+# UserSession Model
+# -------------------------------------------------------------
+
+
+
 class UserSession(Base):
     __tablename__ = "user_sessions"
 

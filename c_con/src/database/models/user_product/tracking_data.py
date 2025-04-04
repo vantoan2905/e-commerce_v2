@@ -3,6 +3,10 @@ from sqlalchemy.sql import func
 from src.database.base import Base
 from sqlalchemy.orm import relationship
 
+# -------------------------------------------------------------
+# TrackingData Model
+# -------------------------------------------------------------
+
 class TrackingData(Base):
     __tablename__ = "tracking_data"
 

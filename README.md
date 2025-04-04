@@ -43,7 +43,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 ### Backend Setup
 
-- Navigate to the e_server/c_con directory.
+- Navigate to the "e_server/c_con" directory.
 - Install dependencies:
 ``` bash
 pip install -r requirements.txt

@@ -1,6 +1,7 @@
 # E-commerce Backend with FastAPI
-## Overview
-This project is an e-commerce backend built with FastAPI. It offers API endpoints for user management, product handling, order processing, and payment integration.
+## Project Overview
+- This project is an e-commerce backend built with FastAPI. It offers API endpoints for user management, product handling, order processing, and payment integration.
+![alt text](project_oveview.png)
 
 ## Features
 - User Authentication: Registration, login, and session management using JWT.
@@ -25,7 +26,6 @@ This project is an e-commerce backend built with FastAPI. It offers API endpoint
 - A database (PostgreSQL, MySQL, or SQLite)
 - Redis (optional, for caching purposes)
 ## Setup Steps
-![alt text](image.png)
 
 
 ### Clone the Repository
@@ -45,6 +45,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 - Navigate to the "e_server/c_con" directory.
 - Install dependencies:
+
 ``` bash
 pip install -r requirements.txt
 ```

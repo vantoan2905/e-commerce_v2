@@ -72,3 +72,10 @@ class ProductSearch(ProductBase):
     price : str
     currency : str
     reviews : str
+    
+    
+class ProductResponse(ProductBase):
+    id: int
+
+    class Config:
+        orm_mode = True  # Enable ORM mode for SQLAlchemy compatibility

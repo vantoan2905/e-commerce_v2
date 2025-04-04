@@ -7,7 +7,7 @@ class Config:
     Loads environment variables for database configuration.
     """
 
-    def __init__(self) -> None:
+    def __init__(self):
         """
         Initialize the Config class and load required environment variables.
         

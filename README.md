@@ -2,7 +2,6 @@
 ## Project Overview
 - This project is an e-commerce backend built with FastAPI. It offers API endpoints for user management, product handling, order processing, and payment integration.
 ![alt text](project_oveview.png)
-
 ## Features
 - User Authentication: Registration, login, and session management using JWT.
 - Product Management: Create, Read, Update, and Delete (CRUD) operations for products.
